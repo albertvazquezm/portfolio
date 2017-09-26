@@ -1,4 +1,6 @@
-if ('serviceWorker' in navigator) {
+require("./styles/styles.scss");
+
+/*if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     navigator.serviceWorker.register('/cache-worker.js').then(function(registration) {
       // Registration was successful
@@ -8,4 +10,4 @@ if ('serviceWorker' in navigator) {
       console.log('ServiceWorker registration failed: ', err);
     });
   });
-}
+}*/

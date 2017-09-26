@@ -1,19 +1,11 @@
-@import '.normalize';
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-button,
-input,
-textarea,
-div,
-span,
-ul,
-a {
+@import './normalize.scss';
+
+* {
     font-family: 'Nunito', sans-serif;
+}
+
+html {
+    font-size: 16px;
 }
 
 input,
@@ -21,6 +13,14 @@ button {
     &:focus {
         outline: none;
     }
+}
+
+.crosstext {
+    text-decoration: line-through;
+}
+
+.color-animate {
+    animation: color 3s infinite;
 }
 
 .image-sidebar {
@@ -41,23 +41,26 @@ button {
     width: 50%;
     display: flex;
     flex-flow: column;
+    overflow-y: scroll;
+    margin-bottom: 88px;
 }
 
 .padded-section {
-    padding: 30px;
+    padding: 60px;
 }
 
 // Titles
 .intro-title {
-    font-size: 6vw;
-    margin: 2vh 0 0;
+    font-size: 6rem;
 }
 
 .intro-subtitle {
-    font-size: 2vw;
-    margin: 1vh 0 0;
-    color: #888;
-    line-height: 3vw;
+    font-size: 1.6rem;
+    color: #555;
+}
+
+.intro-title, .intro-subtitle {
+    margin: 0;
 }
 
 // Tag cloud
@@ -151,7 +154,7 @@ button {
     }
     .balloons-wrapper__balloon-label {
         position: absolute;
-        font-size: 2vw;
+        font-size: 1.6rem;
         text-align: center;
         font-weight: bold;
     }
@@ -185,28 +188,37 @@ button {
 
 .cta-section {
     display: flex;
-    width: 100%;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
     flex: 0 1 100%;
-    min-height: 300px;
-}
-
-.cta-section .button {
-    border: 0;
+    position: fixed;
+    bottom: 0;
+    right: 0;
     width: 50%;
-    margin: 10px;
-    background: #fff;
-    color: #00aaec;
-    box-shadow: none;
-    display: block;
-    padding: 22px;
-    border-radius: 35px;
-    font-size: 18px;
-    box-sizing: border-box;
-    text-align: center;
-    text-decoration: none;
+
+    .button {
+        border: 0;
+        width: 40%;
+        margin: 20px;
+        background: #fff;
+        color: #00aaec;
+        box-shadow: none;
+        display: block;
+        padding: 15px;
+        border-radius: 25px;
+        font-size: 16px;
+        box-sizing: border-box;
+        text-align: center;
+        text-decoration: none;
+
+        &.email {
+            flex: 2;
+        }
+
+        &.social {
+            flex: 1;
+        }
+    }
 }
 
 h3 {
@@ -297,4 +309,30 @@ h3 {
         line-height: 45px;
     }
 }
+
+.projects {
+    margin: 0;
+    padding: 0;
+    li {
+        list-style-type: none;
+        padding: 20px 0 20px 0;
+        .project__header {
+            display: flex;
+            .project__year {
+                color: #888;
+                flex: 0 0 110px;
+            }
+        }
+        .project__tags {
+            display: flex;
+            padding: 0 0 0 110px;
+            margin: 0; 
+            li {
+                padding: 10px 10px 10px 0;
+                color: #e51067;
+            }
+        }
+    }
+}
+
 @import './mediaqueries';
