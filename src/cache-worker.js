@@ -3,11 +3,14 @@ var urlsToCache = [
   '/index.html',
   '/main-bundle.js',
   '/main-bundle.css',
-  '/images'
+  '/images',
+  '/manifest.json'
 ];
 
+/**
+ * Open cache and add resources
+ */
 self.addEventListener('install', function(event) {
-  // Perform install steps
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(function(cache) {
@@ -16,10 +19,30 @@ self.addEventListener('install', function(event) {
   );
 });
 
+/**
+ * Cache first with network fallback
+ */
 self.addEventListener('fetch', function(event) {
   event.respondWith(
     caches.match(event.request).then(function(response) {
       return response || fetch(event.request);
+    })
+  );
+});
+
+/**
+ * Remove unused caches
+ */
+self.addEventListener('activate', function(event) {
+  event.waitUntil(
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames.map(function(cacheName) {
+          if (cacheName !== CACHE_NAME) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
     })
   );
 });

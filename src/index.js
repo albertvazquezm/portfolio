@@ -1,6 +1,6 @@
 require("./styles/styles.scss");
 
-/*if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     navigator.serviceWorker.register('/cache-worker.js').then(function(registration) {
       // Registration was successful
@@ -10,4 +10,4 @@ require("./styles/styles.scss");
       console.log('ServiceWorker registration failed: ', err);
     });
   });
-}*/
+}
