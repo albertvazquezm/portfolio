@@ -56,6 +56,12 @@ module.exports = removeEmpty({
       },
     }),
 
+    new FaviconsWebpackPlugin({
+      logo: './src/images/avimg.svg',
+      prefix: './icons/',
+      inject: true
+    }),
+
     new HtmlWebpackPlugin({
       hash: true,
       filename: 'index.html',
@@ -68,12 +74,6 @@ module.exports = removeEmpty({
       { from: './src/cache-worker.js', to: '.' },
       { from: './src/manifest.json', to: '.' }
     ]),
-
-    new FaviconsWebpackPlugin({
-      // Your source logo
-      logo: './src/images/avimg.svg',
-      prefix: './icons/'
-    }),
 
     ifProduction(
       new ExtractTextPlugin('[name]-bundle-[hash].css'),
