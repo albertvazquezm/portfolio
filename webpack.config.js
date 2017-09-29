@@ -72,7 +72,8 @@ module.exports = removeEmpty({
     new CopyWebpackPlugin([
       { from: './src/images', to: 'images' },
       { from: './src/cache-worker.js', to: '.' },
-      { from: './src/manifest.json', to: '.' }
+      { from: './src/manifest.json', to: '.' },
+      { from: './src/CNAME', to: '.' }
     ]),
 
     ifProduction(
